@@ -1,0 +1,243 @@
+/* Основные настройки */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    margin: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+p {
+    margin: 0.5rem 0;
+}
+
+/* Контейнер */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Шапка */
+header {
+    background-color: #ffffff;
+    padding: 1rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+header .logo h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+header .logo h1 span {
+    color: #f5a623; /* Золотистый цвет */
+}
+
+/* Секция "О компании" */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.about .image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.about .content h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.about .content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about .content ul li {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Секция "Система лояльности" */
+.loyalty {
+    margin: 4rem 0;
+    text-align: center;
+}
+
+.loyalty h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.loyalty .grid {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.loyalty .card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 300px;
+}
+
+.loyalty .card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.loyalty .card p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.loyalty .card p.text-black {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Секция "Форма" */
+.form {
+    margin: 4rem 0;
+}
+
+.form h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form input, .form button {
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.form button {
+    background-color: #f5a623; /* Золотистый цвет */
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form button:hover {
+    background-color: #e59420;
+}
+
+/* Секция "Контакты" */
+.contacts {
+    margin: 4rem 0;
+}
+
+.contacts h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.contacts .flex {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.contacts .flex div {
+    text-align: center;
+    flex: 1;
+}
+
+.contacts .flex p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.contacts .flex a {
+    display: block;
+    margin-top: 0.5rem;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contacts .flex a:hover {
+    text-decoration: underline;
+}
+
+/* Подвал */
+footer {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 2rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer p:last-child {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .loyalty .grid {
+        flex-direction: column;
+    }
+
+    .form form {
+        grid-template-columns: 1fr;
+    }
+
+    .contacts .flex {
+        flex-direction: column;
+    }
+}
