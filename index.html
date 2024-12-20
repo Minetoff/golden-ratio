@@ -65,7 +65,7 @@
                         </div>
                         <div class="info-text">
                             <h2>Доверие клиентов</h2>
-                            <p>Более 10 лет на рынке и тысячи довольных клиентов.</p>
+                            <p>Много лет на рынке и тысячи довольных клиентов.</p>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                     <p class="discount">5% скидка</p>
                 </div>
                 <div class="loyalty-card-description">
-                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 50,000 ₽.</p>
+                    <p class="condition"><span>✔</span> Получается при общей сумме покупок до 1.000.000₽</p>
                 </div>
             </div>
             <div class="loyalty-card-wrapper">
@@ -95,7 +95,7 @@
                     <p class="discount">7% скидка</p>
                 </div>
                 <div class="loyalty-card-description">
-                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 100,000 ₽.</p>
+                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 1 до 25 млн ₽</p>
                 </div>
             </div>
             <div class="loyalty-card-wrapper">
@@ -104,7 +104,7 @@
                     <p class="discount">15% скидка</p>
                 </div>
                 <div class="loyalty-card-description">
-                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 200,000 ₽.</p>
+                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 25.000.000₽</p>
                 </div>
             </div>
         </div>
@@ -131,12 +131,11 @@
                    title="Формат: +7XXXXXXXXXX" 
                    required>
           </div>
-          <div class="form-row">
-            <label for="birthdate">Дата рождения*</label>
+          <div class="form-row date-input">
+            <label for="birthdate">Дата рождения</label>
             <input type="date" 
                    id="birthdate" 
-                   name="birthdate" 
-                   required>
+                   name="birthdate">
           </div>
           <button type="submit" class="submit-btn">Отправить</button>
         </form>
@@ -199,7 +198,7 @@
         });
     });
 
-    // Плавная прокрутка
+    // Главная прокрутка
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -228,7 +227,7 @@
         const birthdate = new Date(formData.get('birthdate'));
         const today = new Date();
         if (birthdate > today) {
-            document.getElementById('form-response').textContent = 'Дата рождения не может быть в будущем';
+            document.getElementById('form-response').textContent = 'Дата рожд��ния не может быть в будущем';
             document.getElementById('form-response').style.color = 'red';
             return;
         }
@@ -297,6 +296,22 @@
         }
         
         e.target.value = formattedValue;
+    });
+
+    // Добавляем наблюдатель за появлением элементов
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && window.innerWidth <= 768) {
+                entry.target.classList.add('info-block-visible');
+            }
+        });
+    }, {
+        threshold: 0.2 // Элемент считается видимым, когда показано 20% его высоты
+    });
+
+    // Наблюдаем за всеми info-block
+    document.querySelectorAll('.info-block').forEach(block => {
+        observer.observe(block);
     });
   </script>
 </body>
