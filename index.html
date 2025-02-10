@@ -43,29 +43,29 @@
                 <div class="info-blocks">
                     <div class="info-block">
                         <div class="info-icon">
-                            <img src="images/diamond_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Элегантность">
+                            <img src="images/diamond_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Искусство">
                         </div>
                         <div class="info-text">
-                            <h2>Элегантность и стиль</h2>
-                            <p>Golden Ratio — это уникальное сочетание изысканного дизайна и высокого качества.</p>
+                            <h2>Искусство и ремесло</h2>
+                            <p>Каждое украшение — это произведение искусства, созданное с любовью и вниманием к деталям.</p>
                         </div>
                     </div>
                     <div class="info-block">
                         <div class="info-icon">
-                            <img src="images/partner_exchange_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Индивидуальность">
+                            <img src="images/partner_exchange_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Традиции">
                         </div>
                         <div class="info-text">
-                            <h2>Индивидуальный подход</h2>
-                            <p>Мы создаем ювелирные украшения, которые подчеркнут вашу индивидуальность.</p>
+                            <h2>Традиции и инновации</h2>
+                            <p>Сочетаем классические техники с современными технологиями для создания уникальных украшений.</p>
                         </div>
                     </div>
                     <div class="info-block">
                         <div class="info-icon">
-                            <img src="images/mood_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg" alt="Доверие">
+                            <img src="images/quality.svg" alt="Качество">
                         </div>
                         <div class="info-text">
-                            <h2>Доверие клиентов</h2>
-                            <p>Много лет на рынке и тысячи довольных клиентов.</p>
+                            <h2>Качество и надежность</h2>
+                            <p>Наши изделия изготовлены из высококачественных и экологически чистых материалов.</p>
                         </div>
                     </div>
                 </div>
@@ -110,38 +110,38 @@
         </div>
     </section>
     <section class="form-section">
-      <h3>Заполните анкету, чтобы получить серебряный статус</h3>
-      <form id="loyalty-form" action="https://formspree.io/f/mzzzkdgv" method="POST" data-skip-handler>
-        <div class="form-row">
-          <label for="name">Как мы можем к вам обращаться?*</label>
-          <input type="text" 
-                 id="name" 
-                 name="name" 
-                 minlength="2"
-                 required>
-        </div>
-        <div class="form-row">
-          <label for="phone">Телефон*</label>
-          <input type="tel" 
-                 id="phone" 
-                 name="phone" 
-                 placeholder="+7" 
-                 pattern="[\+]7[\s\-]?[(]?[0-9]{3}[)]?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}"
-                 title="Формат: +7XXXXXXXXXX" 
-                 required>
-        </div>
-        <div class="form-row date-input">
-          <label for="birthdate">Дата рождения</label>
-          <input type="date" 
-                 id="birthdate" 
-                 name="birthdate">
-        </div>
-        <div class="submit-btn-container">
-          <button type="submit" class="submit-btn">Отправить</button>
-          <p id="form-response" style="margin-top: 10px;"></p>
-        </div>
-      </form>
-  </section>
+        <h3>Заполните анкету, чтобы получить серебряный статус</h3>
+        <form id="loyalty-form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <label for="name">Как мы можем к вам обращаться?*</label>
+            <input type="text" 
+                   id="name" 
+                   name="name" 
+                   minlength="2"
+                   required>
+          </div>
+          <div class="form-row">
+            <label for="phone">Телефон*</label>
+            <input type="tel" 
+                   id="phone" 
+                   name="phone" 
+                   placeholder="+7" 
+                   pattern="[\+]7[\s\-]?[(]?[0-9]{3}[)]?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}"
+                   title="Формат: +7XXXXXXXXXX" 
+                   required>
+          </div>
+          <div class="form-row date-input">
+            <label for="birthdate">Дата рождения</label>
+            <input type="date" 
+                   id="birthdate" 
+                   name="birthdate">
+          </div>
+          <div class="submit-btn-container">
+            <button type="submit" class="submit-btn">Отправить</button>
+            <p id="form-response" style="margin-top: 10px;"></p>
+          </div>
+        </form>
+    </section>
     <section id="contacts" class="contacts-section">
         <h2>Контакты</h2>
         <div class="contacts-container">
@@ -180,7 +180,7 @@
             <img src="images/logo.png" alt="Golden Ratio">
           </div>
           <div class="footer-text">
-            <p>Ювелирные украшения для каждого момента вашей жизни.</p>
+            <p>Ювелирные украшения, созданные с душой и вниманием к деталям</p>
           </div>
         </div>
     </footer>
