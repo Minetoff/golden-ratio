@@ -72,7 +72,7 @@
             </div>
             <div class="image-content">
                 <div class="image-wrapper">
-                    <img src="images/Screenshot 2025-01-02 at 21.46.11.png" alt="Ювелирные украшения">
+                    <img src="images/gallery.jpg" alt="Ювелирные украшения">
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
                     <p class="discount">5%</p>
                 </div>
                 <div class="loyalty-card-description">
-                    <p class="condition"><span>✔</span> Получается при общей сумме покупок до 1.000.000₽</p>
+                    <p class="condition"><span>✔</span> Присваивается при общей сумме покупок до 1.000.000₽</p>
                 </div>
             </div>
             <div class="loyalty-card-wrapper">
@@ -95,7 +95,7 @@
                     <p class="discount">7%</p>
                 </div>
                 <div class="loyalty-card-description">
-                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 1 до 25 млн ₽</p>
+                    <p class="condition"><span>✔</span> Присваивается при общей сумме покупок от 1 до 25 млн ₽</p>
                 </div>
             </div>
             <div class="loyalty-card-wrapper">
@@ -104,7 +104,7 @@
                     <p class="discount">15%</p>
                 </div>
                 <div class="loyalty-card-description">
-                    <p class="condition"><span>✔</span> Получается при общей сумме покупок от 25.000.000₽</p>
+                    <p class="condition"><span>✔</span> Присваивается при общей сумме покупок от 25.000.000₽</p>
                 </div>
             </div>
         </div>
@@ -150,8 +150,8 @@
               <img src="images/telegram.svg" alt="Telegram">
             </div>
             <div class="contact-details">
-              <p class="contact-platform">Telegram</p>
-              <a href="https://t.me/goldenratio2024" target="_blank">Свяжитесь с нами в Telegram</a>
+              <a href="https://t.me/goldenratio2024" target="_blank"><p class="contact-platform">Telegram</p>
+              Свяжитесь с нами в Telegram</a>
             </div>
           </div>
           <div class="contact-item">
@@ -159,8 +159,8 @@
               <img src="images/whatsapp.svg" alt="WhatsApp">
             </div>
             <div class="contact-details">
-              <p class="contact-platform">WhatsApp</p>
-              <a href="https://api.whatsapp.com/send?phone=79143388588" target="_blank">Напишите нам в WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=79143388588" target="_blank"><p class="contact-platform">WhatsApp</p>
+              Напишите нам в WhatsApp</a>
             </div>
           </div>
           <div class="contact-item">
@@ -168,8 +168,8 @@
               <img src="images/instagram.svg" alt="Instagram">
             </div>
             <div class="contact-details">
-              <p class="contact-platform">Instagram</p>
-              <a href="https://www.instagram.com/goldenratio_vl?igsh=MW0wamwzZ2x4a29ybg==" target="_blank">Следите за нами в Instagram</a>
+              <a href="https://www.instagram.com/goldenratio_vl?igsh=MW0wamwzZ2x4a29ybg==" target="_blank"><p class="contact-platform">Instagram</p>
+              Следите за нами в Instagram</a>
             </div>
           </div>
         </div>
@@ -242,7 +242,7 @@
         };
         
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbxX10Yj5JezGkRSWrQhfb4PeaM2GjzYd-GbhtMf48GP9LzfZZIUIXL72EquOSJwTKe6/exec', {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbw_d8Ooho1o5y3Iy9fXozXg6gTYt8OsKWIOlYKWxMckw9NVzGI1Uqtae05iCq5UXD0F/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -251,12 +251,10 @@
             });
             
             if (response.ok) {
-                // Очищаем форму и показываем сообщение об успехе
                 form.reset();
                 document.getElementById('form-response').style.color = 'green';
                 document.getElementById('form-response').textContent = 'Спасибо! Ваша заявка принята.';
                 
-                // Скрываем сообщение через 3 секунды
                 setTimeout(() => {
                     document.getElementById('form-response').textContent = '';
                 }, 3000);
