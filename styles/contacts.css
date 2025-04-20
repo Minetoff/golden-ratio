@@ -1,0 +1,110 @@
+/* Секция контактов */
+.contacts-section {
+    text-align: left;
+    padding: 40px 20px;
+}
+
+.contacts-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.contacts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 300px;
+}
+
+.contact-icon {
+    flex-shrink: 0; /* Не позволяет иконке сжаться */
+    flex-grow: 0;   /* Не позволяет иконке расширяться */
+    background-color: var(--primary-color);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-icon a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+
+.contact-icon img {
+    width: 60%;
+    height: 60%;
+    transition: transform 0.3s ease;
+}
+
+.contact-icon:hover img {
+    transform: scale(1.1);
+}
+.contact-details p {
+    margin-top: 5px;  /* Увеличиваем отступ сверху для сдвига текста вниз */
+}
+
+
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-platform {
+    font-size: 1rem;
+    color: var(--subtext-color);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.contact-details a {
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .contacts-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .contact-item {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .contacts-section {
+        padding: 30px 15px;
+    }
+    .contact-icon {
+        width: 50px;
+        height: 50px;
+    }
+}

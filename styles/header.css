@@ -1,0 +1,257 @@
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.company-name {
+    display: none;
+}
+
+/* Десктопная навигация */
+.desktop-nav {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.desktop-nav a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1rem;
+    transition: color 0.3s;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.desktop-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Мобильная навигация */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 90%;
+    max-width: 400px;
+    background-color: var(--header-bg);
+    z-index: 999;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    padding: 10px 0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+.mobile-nav.active {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.mobile-nav li {
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-nav.active li {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.mobile-nav li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-nav li:nth-child(2) { transition-delay: 0.15s; }
+.mobile-nav li:nth-child(3) { transition-delay: 0.2s; }
+.mobile-nav li:nth-child(4) { transition-delay: 0.25s; }
+.mobile-nav li:nth-child(5) { transition-delay: 0.3s; }
+
+.mobile-nav a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    display: block;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.mobile-nav a:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateX(5px);
+}
+
+/* Кнопка меню */
+.menu-button {
+    display: none;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-button button {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button button span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--dark-color);
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-button button span::before,
+.menu-button button span::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--dark-color);
+    transition: all 0.3s ease-in-out;
+    left: 0;
+}
+
+.menu-button button span::before {
+    top: -8px;
+}
+
+.menu-button button span::after {
+    top: 8px;
+}
+
+.menu-button button.active span {
+    background-color: transparent;
+}
+
+.menu-button button.active span::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-button button.active span::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.menu-button button:hover {
+    background-color: var(--hover-bg);
+    border-radius: 50%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+    .menu-button {
+        display: block;
+    }
+    .mobile-nav {
+        display: block;
+    }
+    .company-name {
+        font-size: 1.2rem;
+    }
+    .menu-button button {
+        padding: 8px;
+    }
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mobile-nav {
+        top: 70px;
+    }
+    .company-name {
+        font-size: 1rem;
+    }
+    .menu-button button {
+        width: 35px;
+        height: 35px;
+    }
+    .menu-button button span,
+    .menu-button button span::before,
+    .menu-button button span::after {
+        width: 20px;
+    }
+}
+
+/* Удаляем дублирующие стили */
+.mobile-menu {
+    display: none;
+} 

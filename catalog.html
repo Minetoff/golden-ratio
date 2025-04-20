@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог - Golden Ratio</title>
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <header class="header catalog-header">
+        <div class="header-content">
+            <div class="back-button">
+                <a href="index.html" class="back-link">
+                    <span class="back-icon">←</span> Вернуться на главную
+                </a>
+            </div>
+            <div class="catalog-logo">
+                <img src="images/logo.png" alt="Golden Ratio">
+            </div>
+            <div class="header-spacer"></div>
+        </div>
+    </header>
+
+    <section class="catalog-section" style="margin-top:0;">
+        <h2 class="catalog-title">Наш ассортимент</h2>
+
+        <!-- Главные вкладки -->
+        <div class="catalog-tabs main-tabs">
+            <button class="tab-button active" data-category="jewelry">Ювелирные украшения</button>
+            <button class="tab-button" data-category="stone">Камнерезное искусство</button>
+        </div>
+
+        <!-- Ювелирные украшения -->
+        <div id="jewelry-container">
+            <div class="catalog-tabs sub-tabs">
+                <button class="sub-tab-button active" data-subcategory="gold">Золотые украшения</button>
+                <button class="sub-tab-button" data-subcategory="silver">Серебряные украшения</button>
+            </div>
+            <div class="catalog-grid active" id="gold-grid"></div>
+            <div class="catalog-grid" id="silver-grid"></div>
+            <div class="next-section-button-container" id="jewelry-next">
+                <button class="next-section-button" data-target="stone">Перейти к Камнерезному искусству</button>
+            </div>
+        </div>
+
+        <!-- Камнерезное искусство -->
+        <div id="stone-container" style="display:none;">
+            <div class="catalog-grid active" id="stone-grid"></div>
+            <div class="next-section-button-container" id="stone-next">
+                <button class="next-section-button" data-target="jewelry">Перейти к Ювелирным украшениям</button>
+            </div>
+        </div>
+
+        <!-- Модальное окно -->
+        <div id="image-modal" class="modal">
+            <span class="modal-close">&times;</span>
+            <img id="modal-image" src="" alt="Увеличенное изображение" class="modal-img">
+            <div class="whatsapp-block">
+                <a id="modal-whatsapp-link" href="https://wa.me/79143388588" target="_blank" class="whatsapp-text-link">
+                    <p id="modal-whatsapp-caption">
+                        Напишите нам в WhatsApp для получения дополнительной информации
+                    </p>
+                </a>
+                <a href="https://wa.me/79143388588" target="_blank" class="whatsapp-link">
+                    <img src="images/whatsapp.svg" alt="WhatsApp">
+                </a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo.png" alt="Golden Ratio">
+            </div>
+            <div class="footer-text">
+                <p>Ювелирные украшения, созданные с душой и вниманием к деталям</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

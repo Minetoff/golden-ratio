@@ -1,157 +1,13 @@
-/* Добавьте в начало файла */
-:root {
-    --primary-color: rgb(214, 165, 165);    /* Нежный розовый */
-    --secondary-color: rgb(190, 189, 189);  /* Серый */
-    --dark-color: rgb(20, 45, 54);         /* Тёмно-синий */
-    --background-color: #fff;
-    --text-color: var(--dark-color);
-    --header-bg: #fff;
-    --card-bg: #fff;
-    --card-description-bg: rgba(214, 165, 165, 0.05);
-    --border-color: var(--secondary-color);
-    --shadow-color: rgba(20, 45, 54, 0.1);
-    --hover-bg: rgba(214, 165, 165, 0.1);
-}
+/* Основной файл стилей */
+@import url('styles/main.css');
+@import url('styles/header.css');
+@import url('styles/catalog.css');
+@import url('styles/forms.css');
+@import url('styles/contacts.css');
+@import url('styles/loyalty.css');
+@import url('styles/footer.css');
 
-/* Заменяем импорт шрифта */
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
-
-body {
-    margin: 0;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    background-color: #fff;
-    color: var(--dark-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.container {
-    max-width: 1200px; /* Ограничение ширины */
-    width: 90%; /* Запас по бокам */
-    margin: 0 auto;
-    padding-top: 80px;
-}
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #fff;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.header-content {
-    position: relative;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo img {
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-}
-
-.company-name {
-    display: none;
-}
-
-.menu-button button {
-    background: none;
-    border: none;
-    padding: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 40px;
-    height: 40px;
-}
-
-.menu-button button span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background-color: #333;
-    position: relative;
-    transition: all 0.3s ease-in-out;
-}
-
-.menu-button button span::before,
-.menu-button button span::after {
-    content: '';
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background-color: #333;
-    transition: all 0.3s ease-in-out;
-}
-
-.menu-button button span::before {
-    top: -4px;
-}
-
-.menu-button button span::after {
-    top: 4px;
-}
-
-/* Анимация для активного состояния */
-.menu-button button.active span {
-    background-color: transparent;
-}
-
-.menu-button button.active span::before {
-    transform: rotate(45deg);
-}
-
-.menu-button button.active span::after {
-    transform: rotate(-45deg);
-}
-
-.menu-button img {
-    width: 20px;
-    height: auto;
-}
-
-.menu-button button:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    border-color: var(--primary-color);
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .company-name {
-        font-size: 1.2rem;
-    }
-
-    .menu-button button {
-        padding: 8px;
-    }
-
-    .logo img {
-        width: 50px;
-        height: 50px;
-    }
-}
-
-/* Обновляем стили для секции о компании */
+/* Секция о компании */
 .about-section {
     padding: 60px 0;
     background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
@@ -201,7 +57,7 @@ body {
 .info-block {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 7px;
     padding: 18px;
     background: #fff;
     border-radius: 15px;
@@ -212,31 +68,19 @@ body {
 .info-block:hover {
     transform: translateY(-5px);
 }
-
 .info-icon {
-    min-width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(214, 165, 165, 0.1);
-    border-radius: 10px;
-    padding: 10px;
+    width: 50px; /* Задайте нужный размер */
+    height: 50px; /* Задайте нужный размер */
+    overflow: hidden;
+    border-radius: 20%; /* Делает изображение круглым, если нужно */
 }
 
 .info-icon img {
-    width: 38px;
-    height: 38px;
-    filter: invert(73%) sepia(12%) saturate(1090%) hue-rotate(314deg) brightness(97%) contrast(87%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Обрезаем изображение, чтобы оно заполнило блок */
 }
 
-.info-block:hover .info-icon {
-    background: var(--primary-color);
-}
-
-.info-block:hover .info-icon img {
-    filter: brightness(0) invert(1);
-}
 
 .info-text {
     flex: 1;
@@ -291,7 +135,7 @@ body {
     transform: scale(1.05);
 }
 
-/* Адаптивность */
+/* Адаптивность для секции о компании */
 @media (max-width: 1024px) {
     .about-content {
         gap: 40px;
@@ -347,24 +191,22 @@ body {
     }
 }
 
-/* Секция лояльности */
-.loyalty-system {
-    text-align: center;
-    padding: 40px 20px;
+
+/* Секция каталога */
+.catalog-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+    margin-top: 40px;
 }
 
-.loyalty-title {
-    font-size: 2.8rem;
+.catalog-title {
+    text-align: center;
     margin-bottom: 40px;
     color: var(--dark-color);
     position: relative;
-    font-weight: 700;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.02em;
 }
 
-.loyalty-title::after {
+.catalog-title::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -376,719 +218,374 @@ body {
     border-radius: 2px;
 }
 
-.loyalty-cards {
+.catalog-tabs {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap;
-    max-width: 80%;
-    margin: 0 auto;
+    margin-bottom: 40px;
 }
 
-.loyalty-card-wrapper {
-    flex: 1 1 250px;
-    max-width: 280px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.loyalty-card-status {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px 15px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-    border: 1px solid var(--primary-color);
-}
-
-.loyalty-card-status h3 {
-    font-size: 1.5rem;
-    color: var(--dark-color);
-    margin: 0 0 15px 0;
-    font-weight: 600;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-}
-
-.loyalty-card-status .discount {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 700;
-}
-
-.loyalty-card-description {
-    background: #f8f8f8;
-    border-radius: 10px;
-    padding: 12px;
-    transition: transform 0.3s ease;
-}
-
-.loyalty-card-description .condition {
-    color: #666;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin: 0;
-}
-
-.loyalty-card-description .condition span {
-    color: var(--primary-color);
-    margin-right: 5px;
-    font-weight: 600;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .loyalty-cards {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .loyalty-card-wrapper {
-        width: 100%;
-    }
-}
-
-/* Секция формы */
-.form-section {
-    padding: 0px 30px 0px 0px;
-    background-color: #fff;
-}
-
-.form-section h3 {
-    text-align: center;
-    font-size: 1.4rem;
-    margin-bottom: 30px;
-    color: var(--text-color);
-    font-weight: 600;
-    position: relative;
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-}
-
-form {
-    max-width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-}
-
-.form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100%;
-    max-width: 400px;
-}
-
-label {
-    font-size: 1rem;
-    color: var(--subtext-color);
-    font-weight: 500;
-}
-
-input {
-    font-size: 1rem;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-    background-color: #fff;
-    color: #333;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-/* Обновляем стили кнопки отправки */
-.submit-btn {
-    background-color: var(--primary-color);
-    color: #fff;
-    font-size: 1rem;
-    padding: 12px 20px;
+.tab-button {
+    padding: 12px 24px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-    width: 200px; /* Фиксированная ширина на десктопе */
-    margin: 0 auto; /* Центрирование на десктопе */
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0;
-}
-
-.submit-btn:hover {
-    background-color: var(--dark-color);
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 768px) {
-    form {
-        max-width: 90%;
-        align-items: flex-start;
-    }
-
-    .form-row {
-        width: 100%;
-        max-width: none;
-    }
-
-    .submit-btn {
-        width: 50%; /* Ширина 50% от родителя на мобильных */
-        margin: 0; /* Убираем центрирование */
-        padding: 12px 0; /* Корректируем padding */
-        min-width: 150px; /* Минимальная ширина кнопки */
-    }
-}
-
-/* Обновляем стили для мобильных устройств */
-@media (max-width: 768px) {
-    .submit-btn {
-        align-self: flex-start;
-    }
-}
-
-@media (max-width: 480px) {
-    .submit-btn {
-        width: 50%;
-    }
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    form {
-        width: 100%;
-    }
-}
-
-/* Секция контактов */
-.contacts-section {
-    text-align: left;
-    padding: 40px 20px;
-}
-
-.contacts-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: var(--text-color);
-}
-
-.contacts-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-}
-
-.contact-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    max-width: 300px;
-}
-
-.contact-icon {
-    background-color: var(--primary-color);
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10px;
-}
-
-.contact-icon img {
-    width: 50%;
-    height: 50%;
-}
-
-.contact-details {
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-platform {
-    font-size: 0.9rem;
-    color: var(--subtext-color);
-    margin-bottom: 5px;
-    font-weight: 500;
-}
-
-.contact-details a {
-    font-size: 0.9rem;
-    text-decoration: none;
-    font-weight: 600;
-    color: var(--text-color);
-}
-
-.contact-details a:hover {
-    text-decoration: underline;
-    color: #444;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .contacts-container {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-    }
-}
-
-/* Футер */
-.footer {
-    background-color: #fff;
-    padding: 40px 20px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-}
-
-.footer-content {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.footer-logo img {
-    width: 50px;
-    height: auto;
-}
-
-.footer-text h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin: 10px 0;
-}
-
-.footer-text p {
-    font-size: 1rem;
-    color: var(--subtext-color);
-    line-height: 1.5;
-    margin: 0;
-    font-weight: 300;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .footer-content {
-        text-align: center;
-    }
-}
-
-/* Стили для десктопной навигации */
-.desktop-nav {
-    display: flex;
-    align-items: center;
-}
-
-.desktop-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 30px;
-}
-
-.desktop-nav a {
-    text-decoration: none;
+    border-radius: 8px;
+    background: #fff;
     color: var(--dark-color);
-    font-size: 1rem;
-    transition: color 0.3s;
-    font-weight: 500;
-    letter-spacing: 0.2px;
     font-family: 'Work Sans', sans-serif;
     font-weight: 500;
-    letter-spacing: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.desktop-nav a:hover {
-    color: var(--primary-color);
+.tab-button.active {
+    background: var(--primary-color);
+    color: #fff;
 }
 
-/* Стли для мобильной навигации */
-.mobile-nav {
-    display: none;
-    position: fixed;
-    top: 85px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-150%);
-    width: 90%;
-    max-width: 400px;
-    background-color: var(--header-bg);
-    padding: 10px;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
+/* Новые стили для мэйсонри‑макета каталога */
+.catalog-grid {
+    display: none;            /* Скрываем все контейнеры по умолчанию */
+    column-count: 3;
+    column-gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.catalog-grid.active {
+    display: block;           /* Видимый контейнер имеет класс active */
+}
+@media (max-width: 768px) {
+    .catalog-grid {
+        column-count: 2;
+    }
 }
 
-.mobile-nav.active {
-    transform: translateX(-50%) translateY(0);
-}
-
-.mobile-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 10px;
+.catalog-item {
+    display: inline-block;            /* Элемент занимает всю ширину колонки */
+    width: 100%;
+    break-inside: avoid;              /* Не допускаем разрыв элемента между колонками */
+    margin-bottom: 20px;
     background: #fff;
     border-radius: 12px;
-}
-
-.mobile-nav li {
-    margin: 5px 0;
-    padding: 0;
-    border-radius: 8px;
     overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
 }
-
-.mobile-nav a {
-    text-decoration: none;
-    color: var(--dark-color);
-    font-size: 1.1rem;
-    display: block;
-    padding: 15px 20px;
-    transition: all 0.3s;
-    border-radius: 8px;
-    font-weight: 500;
-}
-
-.mobile-nav a:hover {
-    background-color: var(--hover-bg);
-}
-
-/* Обновляем стили кнопки меню */
-.menu-button button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    transition: background-color 0.3s;
-}
-
-.menu-button button:hover {
-    background-color: var(--primary-color);
-}
-
-.menu-button button span,
-.menu-button button span::before,
-.menu-button button span::after {
-    width: 24px;
-    height: 2px;
-    background-color: #333;
-    border-radius: 2px;
-    transition: all 0.3s ease-in-out;
-}
-
-.menu-button button span {
-    position: relative;
-}
-
-.menu-button button span::before,
-.menu-button button span::after {
-    content: '';
-    position: absolute;
-    left: 0;
-}
-
-.menu-button button span::before {
-    top: -6px;
-}
-
-.menu-button button span::after {
-    top: 6px;
-}
-
-/* Оновляем анимацию дя активного состояния */
-.menu-button button.active span {
-    background-color: transparent;
-}
-
-.menu-button button.active span::before {
-    top: 0;
-    transform: rotate(45deg);
-}
-
-.menu-button button.active span::after {
-    top: 0;
-    transform: rotate(-45deg);
-}
-
-/* Медиа-запросы */
-@media (max-width: 768px) {
-    .desktop-nav {
-        display: none;
-    }
-
-    .menu-button {
-        display: block;
-    }
-
-    .mobile-nav {
-        display: block;
-    }
-}
-
-/* Удаляем стили для кнопки темы */
-.theme-toggle {
-    display: none;
-}
-
-/* Улучшаем адаптивность */
-@media (max-width: 768px) {
-    .mobile-nav {
-        width: 95%;
-        max-width: 350px;
-        top: 80px;
-    }
-
-    .mobile-nav ul {
-        padding: 5px;
-    }
-
-    .mobile-nav a {
-        padding: 12px 15px;
-        font-size: 1rem;
-    }
-
-    .container {
-        width: 95%;
-        padding-top: 70px;
-    }
-}
-
-/* Добавляем стили для очень маленьких экранов */
-@media (max-width: 360px) {
-    .mobile-nav {
-        width: 100%;
-        border-radius: 12px;
-        top: 75px;
-    }
-
-    .company-name {
-        font-size: 1rem;
-    }
-
-    .menu-button button {
-        width: 35px;
-        height: 35px;
-    }
-}
-
-/* Скрываем кнопку меню по умолчанию */
-.menu-button {
-    display: none;
-}
-
-/* Показываем кнопку меню только на мобильных устройствах */
-@media (max-width: 768px) {
-    .desktop-nav {
-        display: none;
-    }
-
-    .menu-button {
-        display: block;
-    }
-
-    .mobile-nav {
-        display: block;
-    }
-}
-
-/* Обновляем размер шрифтов */
-h1 {
-    font-weight: 700;
-    font-size: 2.8rem;
-    letter-spacing: -0.5px;
-}
-
-h2 {
-    font-weight: 600;
-    font-size: 2.2rem;
-    letter-spacing: -0.3px;
-}
-
-h3 {
-    font-weight: 500;
-    font-size: 1.8rem;
-    letter-spacing: -0.2px;
-}
-
-/* Обновляем размеры всех основных заголовков */
-h1, .loyalty-title {
-    font-size: 2.4rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    color: var(--dark-color);
-    position: relative;
-}
-
-/* Стили для подзаголовка формы */
-.form-section h3 {
-    font-size: 1.8rem;
-    text-align: center;
-    margin-bottom: 30px;
-    color: var(--text-color);
-    font-weight: 600;
-    position: relative;
-}
-
-/* Медиа-запросы для адаптивности заголовков */
-@media (max-width: 768px) {
-    h1, .loyalty-title {
-        font-size: 2rem;
-    }
-
-    .form-section h3 {
-        font-size: 1.6rem;
-    }
-}
-
-@media (max-width: 480px) {
-    h1, .loyalty-title {
-        font-size: 1.8rem;
-    }
-
-    .form-section h3 {
-        font-size: 1.4rem;
-    }
-}
-
-/* Добавляем эффект при наведении */
-.loyalty-card-wrapper:hover .loyalty-card-status,
-.loyalty-card-wrapper:hover .loyalty-card-description {
+.catalog-item:hover {
     transform: translateY(-5px);
 }
 
-/* Обновляем медиа-запросы */
-@media (max-width: 768px) {
-    form {
-        max-width: 90%;
-    }
-
-    .loyalty-cards {
-        max-width: 90%;
-    }
+.catalog-item-link {
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
 }
 
-/* Обновляем стили для галочек */
-.loyalty-card-description .condition span {
-    color: var(--primary-color);
-    margin-right: 5px;
-    font-weight: 600;
+.catalog-item-image {
+    width: 100%;
+    overflow: hidden;
 }
 
-/* Обновляем стили формы */
-.form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 50%;
+.catalog-item-image img {
+    width: 100%;
+    height: auto;                     /* Сохраняем исходные пропорции */
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    border-radius: 8px;
+    display: block;
+}
+.catalog-item:hover .catalog-item-image img {
+    transform: scale(1.05);
+}
+
+.catalog-item-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.catalog-item-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--dark-color);
+}
+
+/* Секция с кнопкой перехода к каталогу */
+.catalog-link-section {
+    padding: 40px 0;
+    margin: 40px 0;
+    text-align: center;
+    background: linear-gradient(135deg, #fff 0%, #f8f8f8 100%);
+}
+
+.catalog-link-container {
+    max-width: 600px;
     margin: 0 auto;
 }
 
-/* Специальные стили для поля даты */
-.form-row.date-input {
-    width: 50%;
+.catalog-link-container h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--dark-color);
 }
 
-/* Медиа-запросы для адаптивности формы */
+.catalog-link-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.catalog-link-button:hover {
+    background-color: var(--dark-color);
+    transform: translateY(-2px);
+}
+
+/* Шапка каталога */
+.catalog-header {
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.catalog-header .header-content {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.back-button {
+    justify-self: start;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--dark-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.back-link:hover {
+    color: var(--primary-color);
+    background-color: rgba(214, 165, 165, 0.1);
+}
+
+.back-icon {
+    margin-right: 8px;
+    font-size: 1.2rem;
+}
+
+.catalog-logo {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+.catalog-logo img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.catalog-logo .company-name {
+    display: none;
+}
+
+.header-spacer {
+    width: 100%;
+}
+
+/* Стили для кнопки перехода между разделами каталога */
+.next-section-button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.next-section-button {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.next-section-button:hover {
+    background-color: var(--dark-color);
+}
+
+/* ======== Модальное окно ======== */
+.modal {
+    display: none;               /* скрыто по‑умолчанию */
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;      /* СТАВИМ КОЛОННУ */
+    padding: 20px;               /* Отступы, чтобы контент не упирался в края */
+    box-sizing: border-box;
+}
+
+/* Крестик */
+.modal-close {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+/* Изображение */
+.modal-img {
+    max-width: 90vw;           /* не шире 90% ширины экрана */
+    max-height: 70vh;          /* не выше 70% высоты экрана */
+    object-fit: contain;
+    border-radius: 12px;
+    z-index: 2000;
+}
+
+/* Блок с текстом и ссылкой */
+.whatsapp-block {
+    margin-top: 12px;
+    padding: 12px 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    text-align: center;
+    max-width: 90vw;           /* не шире, чем картинка под ней */
+    box-sizing: border-box;
+    z-index: 2000;
+}
+
+.whatsapp-block p {
+    margin: 0 0 8px;
+    color: var(--dark-color);
+    font-weight: 500;
+}
+
+.whatsapp-link img {
+    width: 32px;
+    height: auto;
+}
+
+.whatsapp-text-link {
+    text-decoration: none;
+}
+
+.whatsapp-text-link p:hover {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+
+
+/* Корректировка отступа для каталога */
+.catalog-section {
+    margin-top: 0;
+}
+
+/* Стили для суб-вкладок внутри раздела Ювелирные украшения */
+.catalog-tabs.sub-tabs {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.catalog-tabs.sub-tabs .sub-tab-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1rem;
+}
+
+.catalog-tabs.sub-tabs .sub-tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.catalog-tabs.sub-tabs .sub-tab-button.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+@media (max-width: 480px) {
+    .catalog-tabs.sub-tabs {
+        margin: 10px 0; /* уменьшить отступы для мобильных */
+        text-align: center;
+    }
+
+    .catalog-tabs.sub-tabs .sub-tab-button {
+        padding: 8px 16px;   /* уменьшить отступы внутри кнопок */
+        font-size: 0.9rem;   /* немного меньше шрифт */
+        margin: 0 5px;       /* уменьшить отступы между кнопками */
+        border-radius: 6px;  /* немного меньшая скруглённость */
+    }
+
+    .catalog-tabs.sub-tabs .sub-tab-button:hover {
+        background-color: #e0e0e0;
+    }
+
+    .catalog-tabs.sub-tabs .sub-tab-button.active {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+}
+
+
+/* Адаптивность для шапки каталога */
 @media (max-width: 768px) {
-    .form-row {
-        width: 100%;
-        align-self: flex-start;
+    .catalog-header .header-content {
+        grid-template-columns: auto auto;
+        gap: 20px;
+        padding: 10px 15px;
     }
-
-    .form-row.date-input {
-        width: 100%;
-        align-self: flex-start;
+    .header-spacer {
+        display: none;
     }
-
-    .submit-btn {
-        align-self: flex-start;
+    .catalog-logo {
+        justify-self: end;
+    }
+    .back-link {
+        padding: 6px 12px;
+        font-size: 0.9rem;
     }
 }
 
-/* Добавляем стили для анимации появления блоков на мобильных устройствах */
+@media (max-width: 480px) {
+    .catalog-logo img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Удаляем анимацию появления блоков */
 @media (max-width: 768px) {
     .info-block {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
+        opacity: 1;
+        transform: none;
     }
-
     .info-block-visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: none;
     }
-
-    /* Добавляем задержку для последовательного появления блоков */
-    .info-block:nth-child(1) {
-        transition-delay: 0.1s;
-    }
-
-    .info-block:nth-child(2) {
-        transition-delay: 0.2s;
-    }
-
-    .info-block:nth-child(3) {
-        transition-delay: 0.3s;
-    }
-
-    /* При наведении сохраняем эффект подъема */
     .info-block-visible:hover {
         transform: translateY(-5px);
-    }
-}
-
-/* Добавляем стили для контейнера кнопки и сообщения */
-.submit-btn-container {
-    width: 100%;
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Для десктопной версии */
-}
-
-/* Обновляем стили для сообщения после отправки */
-#form-response {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    text-align: left;
-    width: 200px; /* Такая же ширина как у кнопки */
-}
-
-/* Медиа-запросы для адаптивности */
-@media (max-width: 768px) {
-    .submit-btn-container {
-        align-items: flex-start; /* Для мобильной версии */
-    }
-
-    #form-response {
-        width: 50%; /* Такая же ширина как у кнопки на мобильных */
-        min-width: 150px;
     }
 }

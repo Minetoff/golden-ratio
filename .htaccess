@@ -1,0 +1,36 @@
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Кэшировать изображения на 1 месяц
+  ExpiresByType image/jpeg  "access plus 1 month"
+  ExpiresByType image/png   "access plus 1 month"
+  ExpiresByType image/gif   "access plus 1 month"
+  ExpiresByType image/webp  "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Cache-Control "public, max-age=2592000"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # При заходе на /index.html → редирект на /
+  RewriteCond %{THE_REQUEST} \s/index\.html [NC]
+  RewriteRule ^index\.html$ / [L,R=301]
+
+  # При заходе на /catalog.html → редирект на /catalog
+  RewriteCond %{THE_REQUEST} \s/catalog\.html [NC]
+  RewriteRule ^catalog\.html$ /catalog [L,R=301]
+
+  # Чистый URL /catalog → catalog.html
+  RewriteRule ^catalog/?$ catalog.html [L]
+
+  # Общий механизм: /имя → имя.html, если такой файл существует
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^([^/]+)/?$ $1.html [L]
+</IfModule>
+
+# По умолчанию отдавать index.html при заходе на /
+DirectoryIndex index.html

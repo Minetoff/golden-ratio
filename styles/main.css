@@ -1,0 +1,85 @@
+/* Основные переменные */
+:root {
+    --primary-color: rgb(214, 165, 165);    /* Нежный розовый */
+    --secondary-color: rgb(190, 189, 189);    /* Серый */
+    --dark-color: rgb(20, 45, 54);            /* Тёмно-синий */
+    --background-color: #fff;
+    --text-color: var(--dark-color);
+    --header-bg: #fff;
+    --card-bg: #fff;
+    --card-description-bg: rgba(214, 165, 165, 0.05);
+    --border-color: var(--secondary-color);
+    --shadow-color: rgba(20, 45, 54, 0.1);
+    --hover-bg: rgba(214, 165, 165, 0.1);
+}
+
+/* Импорт шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
+/* Базовые стили */
+body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400;
+    background-color: #fff;
+    color: var(--dark-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 80px;
+}
+
+/* Размеры заголовков */
+h1 {
+    font-weight: 700;
+    font-size: 2.8rem;
+    letter-spacing: -0.5px;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 2.2rem;
+    letter-spacing: -0.3px;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.8rem;
+    letter-spacing: -0.2px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    h3 {
+        font-size: 1.6rem;
+    }
+    .container {
+        width: 95%;
+        padding-top: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    h3 {
+        font-size: 1.4rem;
+    }
+} 
