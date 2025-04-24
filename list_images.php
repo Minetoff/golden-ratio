@@ -11,13 +11,14 @@ function listDirectory($dir) {
             closedir($dh);
         }
     }
+    // Alphabetical sort by filename
+    sort($files, SORT_NATURAL | SORT_FLAG_CASE);
     return $files;
 }
 
-$gold = listDirectory('jewelry/Gold');
+$gold   = listDirectory('jewelry/Gold');
 $silver = listDirectory('jewelry/Silver');
-$stone = listDirectory('jewelry/Stone');
+$stone  = listDirectory('jewelry/Stone');
 
 header('Content-Type: application/json');
 echo json_encode(['gold' => $gold, 'silver' => $silver, 'stone' => $stone]);
-?>
