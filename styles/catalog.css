@@ -50,38 +50,49 @@
 
 /* Новые стили для мэйсонри‑макета каталога */
 .catalog-grid {
-    display: none;            /* Скрываем все контейнеры по умолчанию */
-    column-count: 3;
-    column-gap: 20px;
+    display: none;
+    position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    /*padding: 20px;*/
 }
 
-.catalog-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-    padding: 20px;
-}
 .catalog-grid.active {
-    display: block;           /* Видимый контейнер имеет класс active */
+    display: block; /* Видимый контейнер имеет класс active */
 }
+
+.grid-sizer,
+.catalog-item {
+    width: 32.133%; /* ровно 3 в ряд */
+}
+
+/* 2) на планшете — 2 в ряд */
 @media (max-width: 768px) {
-    .catalog-grid {
-        column-count: 2;
+    .grid-sizer,
+    .catalog-item {
+        width: 47%;
+    }
+}
+
+/* 3) на мобильных можно оставить 2 или 1 в ряд по желанию */
+@media (max-width: 480px) {
+    .grid-sizer,
+    .catalog-item {
+        width: 47%; /* 2 в ряд */
     }
 }
 
 .catalog-item {
-    display: inline-block;            /* Элемент занимает всю ширину колонки */
-    width: 100%;
-    break-inside: avoid;              /* Не допускаем разрыв элемента между колонками */
-    margin-bottom: 20px;
+    display: inline-block; /* Элемент занимает всю ширину колонки */
+    break-inside: avoid; /* Не допускаем разрыв элемента между колонками */
+    margin: 0 5px 20px 0;
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
+
 .catalog-item:hover {
     transform: translateY(-5px);
 }
@@ -99,12 +110,13 @@
 
 .catalog-item-image img {
     width: 100%;
-    height: auto;                     /* Сохраняем исходные пропорции */
+    height: auto; /* Сохраняем исходные пропорции */
     object-fit: cover;
     transition: transform 0.3s ease;
     border-radius: 8px;
     display: block;
 }
+
 .catalog-item:hover .catalog-item-image img {
     transform: scale(1.05);
 }
@@ -239,23 +251,26 @@
 
 /* ======== Модальное окно ======== */
 .modal {
-    display: none;               /* скрыто по‑умолчанию */
+    display: none; /* скрыто по‑умолчанию */
     position: fixed;
     z-index: 2000;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
-    flex-direction: column;      /* СТАВИМ КОЛОННУ */
-    padding: 20px;               /* Отступы, чтобы контент не упирался в края */
+    flex-direction: column; /* СТАВИМ КОЛОННУ */
+    padding: 20px; /* Отступы, чтобы контент не упирался в края */
     box-sizing: border-box;
 }
 
 /* Крестик */
 .modal-close {
     position: absolute;
-    top: 20px; right: 20px;
+    top: 20px;
+    right: 20px;
     font-size: 32px;
     color: #fff;
     cursor: pointer;
@@ -264,8 +279,8 @@
 
 /* Изображение */
 .modal-img {
-    max-width: 90vw;           /* не шире 90% ширины экрана */
-    max-height: 70vh;          /* не выше 70% высоты экрана */
+    max-width: 90vw; /* не шире 90% ширины экрана */
+    max-height: 70vh; /* не выше 70% высоты экрана */
     object-fit: contain;
     border-radius: 12px;
     z-index: 2000;
@@ -278,7 +293,7 @@
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     text-align: center;
-    max-width: 90vw;           /* не шире, чем картинка под ней */
+    max-width: 90vw; /* не шире, чем картинка под ней */
     box-sizing: border-box;
     z-index: 2000;
 }
@@ -321,7 +336,7 @@
     gap: 10px;
     margin: 20px 0;
     padding: 10px 0;
-    background-color: rgba(245, 245, 245, 0.8);  /* ← gray background */
+    background-color: rgba(245, 245, 245, 0.8); /* ← gray background */
     border-radius: 12px;
     text-align: center;
 }
@@ -353,6 +368,7 @@
         background-clip: border-box;
         background-origin: padding-box;
     }
+
     .catalog-tabs.sub-tabs {
         flex-direction: column;
         margin: 10px 0; /* уменьшить отступы для мобильных */
@@ -360,10 +376,10 @@
     }
 
     .catalog-tabs.sub-tabs .sub-tab-button {
-        padding: 8px 16px;   /* уменьшить отступы внутри кнопок */
-        font-size: 0.9rem;   /* немного меньше шрифт */
-        margin: 0 5px;       /* уменьшить отступы между кнопками */
-        border-radius: 6px;  /* немного меньшая скруглённость */
+        padding: 8px 16px; /* уменьшить отступы внутри кнопок */
+        font-size: 0.9rem; /* немного меньше шрифт */
+        margin: 0 5px; /* уменьшить отступы между кнопками */
+        border-radius: 6px; /* немного меньшая скруглённость */
     }
 
     .catalog-tabs.sub-tabs .sub-tab-button:hover {
@@ -384,12 +400,15 @@
         gap: 20px;
         padding: 10px 15px;
     }
+
     .header-spacer {
         display: none;
     }
+
     .catalog-logo {
         justify-self: end;
     }
+
     .back-link {
         padding: 6px 12px;
         font-size: 0.9rem;
@@ -409,10 +428,12 @@
         opacity: 1;
         transform: none;
     }
+
     .info-block-visible {
         opacity: 1;
         transform: none;
     }
+
     .info-block-visible:hover {
         transform: translateY(-5px);
     }
@@ -420,30 +441,31 @@
 
 /* Ховер для неактивных кнопок основных вкладок */
 .catalog-tabs.main-tabs .tab-button:not(.active):hover {
-    background-color: #e0e0e0;   /* как у sub-tabs hover */
-    color: var(--dark-color);    /* сохраняем основной цвет текста */
+    background-color: #e0e0e0; /* как у sub-tabs hover */
+    color: var(--dark-color); /* сохраняем основной цвет текста */
 }
 
 .catalog-tabs.main-tabs .tab-button {
-    font-size: 1.1rem;      /* увеличенный размер текста */
+    font-size: 1.1rem; /* увеличенный размер текста */
 }
 
 /* При активном состоянии — чуть более выраженный эффект */
 .catalog-tabs.main-tabs .tab-button.active {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+
 @media (max-width: 480px) {
     /* 1) Контейнер не растягивает детей */
     .catalog-tabs {
         flex-direction: column;
-        align-items: center;    /* теперь кнопки будут по центру и не на 100% */
+        align-items: center; /* теперь кнопки будут по центру и не на 100% */
         padding: 0;
     }
 
     /* 2) Гарантируем авто-ширину у самих кнопок */
     .catalog-tabs .tab-button,
     .catalog-tabs .sub-tab-button {
-        width: auto;            /* авто-ширина по содержимому */
-        max-width: 90%;         /* опционально: не больше 90% экрана */
+        width: auto; /* авто-ширина по содержимому */
+        max-width: 90%; /* опционально: не больше 90% экрана */
     }
 }

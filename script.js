@@ -1,8 +1,13 @@
+/* ===== Хранилище инстансов Masonry ===== */
+const masonryInstances = {};
+
 /* ===== МОДАЛЬНОЕ ОКНО ДЛЯ ИЗОБРАЖЕНИЙ ===== */
 function populateCatalog(subcategory, files) {
     const grid = document.getElementById(subcategory + '-grid');
     if (!grid) return;
-    grid.innerHTML = '';
+
+    // 1) очищаем и добавляем grid-sizer
+    grid.innerHTML = '<div class="grid-sizer"></div>';
 
     const folder = subcategory.charAt(0).toUpperCase() + subcategory.slice(1);
     files.forEach(file => {
@@ -20,7 +25,20 @@ function populateCatalog(subcategory, files) {
         `;
         link.addEventListener('click', () => openImageModal(imgSrc));
         catalogItem.appendChild(link);
+
         grid.appendChild(catalogItem);
+    });
+
+    // 2) ждём загрузки всех картинок и инициализируем Masonry
+    imagesLoaded(grid, () => {
+        const msnry = new Masonry(grid, {
+            itemSelector: '.catalog-item',
+            columnWidth: '.grid-sizer',
+            percentPosition: true,
+            gutter: 20,
+            horizontalOrder: true
+        });
+        masonryInstances[subcategory] = msnry;
     });
 }
 
@@ -152,10 +170,19 @@ document.addEventListener('DOMContentLoaded', () => {
             mainTabs.forEach(t => t.classList.toggle('active', t === this));
             document.getElementById('jewelry-container').style.display = cat === 'jewelry' ? 'block' : 'none';
             document.getElementById('stone-container').style.display   = cat === 'stone'   ? 'block' : 'none';
+
+            // пересобираем masonry в активной сетке
+            let key;
+            if (cat === 'jewelry') {
+                key = document.querySelector('.sub-tabs .sub-tab-button.active').dataset.subcategory;
+            } else {
+                key = 'stone';
+            }
+            if (masonryInstances[key]) masonryInstances[key].layout();
         });
     });
 
-    // Суб‑вкладки
+    // Суб-вкладки
     const subTabs = document.querySelectorAll('.sub-tabs .sub-tab-button');
     subTabs.forEach(tab => {
         tab.addEventListener('click', function() {
@@ -164,6 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('#jewelry-container .catalog-grid')
                 .forEach(gr => gr.classList.remove('active'));
             document.getElementById(sub + '-grid').classList.add('active');
+
+            // пересобираем masonry в активной сетке
+            if (masonryInstances[sub]) masonryInstances[sub].layout();
         });
     });
 
@@ -175,6 +205,15 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('jewelry-container').style.display = tgt === 'jewelry' ? 'block' : 'none';
             document.getElementById('stone-container').style.display   = tgt === 'stone'   ? 'block' : 'none';
             document.querySelector('.catalog-section').scrollIntoView({ behavior: 'smooth' });
+
+            // и тут тоже пересборка masonry
+            let key2;
+            if (tgt === 'jewelry') {
+                key2 = document.querySelector('.sub-tabs .sub-tab-button.active').dataset.subcategory;
+            } else {
+                key2 = 'stone';
+            }
+            if (masonryInstances[key2]) masonryInstances[key2].layout();
         });
     });
 
